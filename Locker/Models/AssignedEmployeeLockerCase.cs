@@ -12,13 +12,12 @@ namespace Locker.Models
     {
      
         [Key]
-        [Column(Order = 0)]
-        public int EmployeeId { get; set; }
+        public int EmployeeId { get; internal set; }
         
        
-        [Key]
-        [Column(Order = 1)]
-        public int LockerCaseId { get; set; }
+        
+        
+        public int LockerCaseId { get; internal set; }
 
         public virtual Employee Employee { get; set; }
         public virtual LockerCase LockerCase { get; set; }

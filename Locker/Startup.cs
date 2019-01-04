@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,6 +36,9 @@ namespace Locker
             services.AddDbContext<LockerDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("LockerContext")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddDbContext<LockerContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("LockerContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
