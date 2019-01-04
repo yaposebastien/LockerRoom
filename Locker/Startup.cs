@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Locker.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Locker
 {
@@ -31,7 +33,8 @@ namespace Locker
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddDbContext<LockerDbContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("LockerContext")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
